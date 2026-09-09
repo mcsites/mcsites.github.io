@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inmuebles de Oportunidad | Multilink</title>
+    <!-- Fuente moderna Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Ocultar barra de desplazamiento manteniendo la funcionalidad de scroll */
+        html {
+            scrollbar-width: none; /* Para Firefox */
+            -ms-overflow-style: none; /* Para IE/Edge */
+        }
+
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none; /* Para Chrome, Safari, Opera y Edge */
+            width: 0;
+            height: 0;
+        }
+
+        /* Variables de color y diseño idénticas a la plantilla original */
+        :root {
+            --bg-body: #070b19;             /* Fondo azul noche muy oscuro */
+            --bg-card: rgba(15, 23, 42, 0.92); /* Azul oscuro neutro semitransparente */
+            
+            /* Esquema Fucsia */
+            --bg-card-fuchsia: rgba(45, 10, 40, 0.92); 
+            --fuchsia-accent: #ff007f;       /* Fucsia neón */
+            --fuchsia-bright: #ffb3de;       /* Rosa pastel claro */
+            --fuchsia-border: #e01e84;       /* Borde fucsia brillante */
+            
+            /* Esquema Púrpura */
+            --purple-accent: #c084fc;       /* Púrpura pastel claro */
+            --purple-dark: #6b21a8;         /* Púrpura profundo */
+            --border-purple: #3b1d6e;       /* Borde púrpura discreto */
+            
+            /* Colores de Texto */
+            --text-main: #f8fafc;           /* Texto principal claro */
+            --text-muted: #cbd5e1;          /* Texto secundario */
+            
+            --radius: 12px;
+            --shadow-fuchsia: 0 0 20px rgba(255, 0, 127, 0.25);
+            --shadow-purple: 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 0, 127, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+                linear-gradient(rgba(255, 0, 127, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 127, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(7, 11, 25, 0.88), rgba(7, 11, 25, 0.88)),
+                url('https://lh3.googleusercontent.com/d/1yFTMEPCMFrkI9aDS8QkSDPMnuzuq4xtl');
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px, cover, cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2.5rem 1rem;
+            animation: backgroundGlow 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundGlow {
+            0% {
+                background-position: 0% 0%, 0% 0%, 0 0, 0 0, center, center;
+            }
+            100% {
+                background-position: 10% 20%, -10% -20%, 20px 20px, 20px 20px, center, center;
+            }
+        }
+
+        .container {
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        /* Encabezado */
+        header {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--fuchsia-border);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.2);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--fuchsia-accent), #a855f7);
+        }
+
+        /* Imagen tipo Banner Rectangular */
+        .header-banner {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--fuchsia-accent);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+            margin-bottom: 1.2rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        header .subtitle {
+            font-size: 1rem;
+            color: var(--fuchsia-bright);
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+
+        /* Secciones y Tarjetas */
+        .section-block {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 0, 127, 0.5), transparent);
+        }
+
+        /* Botones Alternados */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.85rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid transparent;
+        }
+
+        /* Estilo Fucsia Neón */
+        .btn-fuchsia {
+            background: linear-gradient(135deg, rgba(50, 10, 42, 0.95), rgba(20, 10, 30, 0.95));
+            border-color: var(--fuchsia-border);
+            color: #ffffff;
+        }
+
+        .btn-fuchsia:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(70, 15, 60, 0.98), rgba(30, 10, 45, 0.98));
+            box-shadow: var(--shadow-fuchsia);
+            border-color: var(--fuchsia-accent);
+        }
+
+        /* Estilo Púrpura / Azul */
+        .btn-purple {
+            background: var(--bg-card);
+            border-color: var(--border-purple);
+            color: var(--purple-accent);
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-2px);
+            background: rgba(30, 27, 75, 0.95);
+            box-shadow: var(--shadow-purple);
+            color: #ffffff;
+            border-color: var(--purple-accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Encabezado de Perfil con Banner Rectangular -->
+        <header>
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=80" alt="Inmuebles de Oportunidad Banner" class="header-banner">
+            <h1>INMUEBLES DE OPORTUNIDAD</h1>
+            <div class="subtitle">Bienes Raíces | Asesoría | Oportunidades</div>
+        </header>
+
+        <main>
+            <!-- ÚNICA SECCIÓN: ALIADOS DE VENTAS -->
+            <section class="section-block">
+                <h2 class="section-title">Aliados de Ventas</h2>
+                
+                <a href="https://inmueblesdeoportunidad.com/aliado1" target="_blank" class="btn btn-fuchsia">Aliado de Ventas 1</a>
+                <a href="https://inmueblesdeoportunidad.com/aliado2" target="_blank" class="btn btn-purple">Aliado de Ventas 2</a>
+                <a href="https://inmueblesdeoportunidad.com/aliado3" target="_blank" class="btn btn-fuchsia">Aliado de Ventas 3</a>
+                <a href="https://inmueblesdeoportunidad.com/aliado4" target="_blank" class="btn btn-purple">Aliado de Ventas 4</a>
+                <a href="https://inmueblesdeoportunidad.com/aliado5" target="_blank" class="btn btn-fuchsia">Aliado de Ventas 5</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Inmuebles de Oportunidad. Todos los derechos reservados.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
