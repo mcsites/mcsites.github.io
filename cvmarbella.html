@@ -278,6 +278,19 @@
             color: var(--text-muted);
         }
 
+        /* Estilo para listas detalladas en Cursos */
+        .course-sublist {
+            list-style-type: disc;
+            margin-left: 1.2rem;
+            margin-top: 0.4rem;
+            color: var(--text-main);
+            font-size: 0.85rem;
+        }
+
+        .course-sublist li {
+            margin-bottom: 0.25rem;
+        }
+
         /* Referencias Personales */
         .ref-item {
             margin-bottom: 1.25rem;
@@ -459,7 +472,7 @@
                 </section>
             </main>
 
-            <!-- Columna Derecha (Estudios, Diplomados y Habilidades) -->
+            <!-- Columna Derecha (Estudios, Diplomados y Cursos Detallados) -->
             <aside>
                 <section class="card">
                     <h2 class="section-title">Estudios Formales</h2>
@@ -501,16 +514,11 @@
                     <h2 class="section-title">Cursos y Especialización</h2>
                     <ul class="edu-list">
                         <li class="edu-item">
-                            <div class="edu-degree">Enseñanza en Línea y Competencias Digitales I y II</div>
-                            <div class="edu-meta">UCAB (2021 - 2022)</div>
+                            <div class="edu-degree">Universidad Católica Andrés Bello (2021-2022)</div>
+                            <ul class="course-sublist">
+                                <li>Fundamentos Prácticos para la Enseñanza en Línea.</li>
+                                <li>Fundamentos Prácticos para la Enseñanza en Línea II: Competencias Digitales para Docente.</li>
+                            </ul>
                         </li>
                         <li class="edu-item">
-                            <div class="edu-degree">Formación de Intérpretes y Guías-Intérpretes de LSV</div>
-                            <div class="edu-meta">CONAPDIS (2019 / 2021)</div>
-                        </li>
-                        <li class="edu-item">
-                            <div class="edu-degree">Lengua de Señas Venezolana (Nivel I y II)</div>
-                            <div class="edu-meta">Asociación de Sordos de Caracas / Org. Testigos de Jehová</div>
-                        </li>
-                        <li class="edu-item">
-                            <div class="edu-degree">Formación de Facilitadores e Ins
+                            <div class="edu-degree">CONAPDIS</div
