@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA // Architectural Sound & High-Fidelity Engineering</title>
+    
+    <!-- Tipografías técnicas y geométricas de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           VARIABLES DE DISEÑO - AURA BRUTALIST UI
+           ========================================================================== */
+        :root {
+            --cyan-glow: #00f0ff;
+            --cyan-glow-alpha: rgba(0, 240, 255, 0.35);
+            --border-glow: rgba(0, 240, 255, 0.45);
+            --bg-overlay: rgba(10, 15, 24, 0.65);
+            --bg-card: rgba(12, 18, 28, 0.75);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            --font-mono: 'Share Tech Mono', monospace;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
+
+            --radius-ui: 10px;
+        }
+
+        /* ==========================================================================
+           RESET Y ESTRUCTURA DE FONDO CON IMAGEN DE DRIVE
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            background-color: #05070a;
+            /* SE REEMPLAZA POR EL LINK DE TU DRIVE O LA IMAGEN LOCAL GENERADA */
+            background-image: 
+                linear-gradient(rgba(5, 7, 10, 0.55), rgba(5, 7, 10, 0.75)),
+                url('arte grafico ia_01.jpg'); 
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2rem 3rem;
+            line-height: 1.4;
+        }
+
+        /* Ocultar scrollbar pero mantener navegación suave */
+        html {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        html::-webkit-scrollbar {
+            display: none;
+        }
+
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+        }
+
+        /* ==========================================================================
+           HEADER / BARRA SUPERIOR ESTRUCTURADA
+           ========================================================================== */
+        .site-header {
+            background: var(--bg-overlay);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-ui);
+            padding: 0.85rem 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+        }
+
+        .brand-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--cyan-glow);
+            text-shadow: 0 0 8px var(--cyan-glow);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .live-status {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        .btn-audit {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glow);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: all 0.25s ease;
+        }
+
+        .btn-audit:hover {
+            background: var(--cyan-glow);
+            color: #000000;
+            box-shadow: 0 0 15px var(--cyan-glow);
+        }
+
+        /* ==========================================================================
+           HERO SECTION (TITULAR Y CTAs)
+           ========================================================================== */
+        .hero-container {
+            max-width: 680px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding-top: 1rem;
+        }
+
+        .tag-line {
+            font-family: var(--font-mono);
+            color: var(--cyan-glow);
+            font-size: 0.95rem;
+            letter-spacing: 0.15em;
+        }
+
+        .main-headline {
+            font-family: var(--font-heading);
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .description {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            font-weight: 500;
+            max-width: 580px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+
+        .cta-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn-cyan {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: var(--cyan-glow-alpha);
+            border: 1.5px solid var(--cyan-glow);
+            padding: 0.85rem 1.8rem;
+            border-radius: 25px;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            box-shadow: 0 0 15px var(--cyan-glow-alpha);
+            transition: all 0.25s ease;
+        }
+
+        .btn-cyan:hover {
+            background: var(--cyan-glow);
+            color: #000;
+            box-shadow: 0 0 25px var(--cyan-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            color: var(--cyan-glow);
+        }
+
+        /* ==========================================================================
+           SECCIÓN DE ESPECIFICACIONES TÉCNICAS (GRID DE CARDS)
+           ========================================================================== */
+        .specs-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .specs-title {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .card-tech {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-ui);
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-tech:hover {
+            border-color: var(--cyan-glow);
+            box-shadow: 0 0 20px var(--cyan-glow-alpha);
+        }
+
+        .card-icon {
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--cyan-glow);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 240, 255, 0.05);
+            color: var(--cyan-glow);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .card-content h3 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            color: #ffffff;
+            margin-bottom: 0.35rem;
+            letter-spacing: 0.05em;
+        }
+
+        .card-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        /* ==========================================================================
+           FOOTER TÉCNICO
+           ========================================================================== */
+        .site-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .social-link:hover {
+            color: var(--cyan-glow);
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 960px) {
+            body { padding: 1.5rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .main-headline { font-size: 2.3rem; }
+            .nav-items { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- HEADER / BARRA DE CONTROL -->
+        <header class="site-header">
+            <div class="brand-title">[ AURA // 01 ]</div>
+            <nav>
+                <ul class="nav-items">
+                    <li><a href="#estudio" class="nav-link">_01_ESTUDIO</a></li>
+                    <li><a href="#sistemas" class="nav-link">_02_SISTEMAS</a></li>
+                    <li><a href="#portafolio" class="nav-link">_03_PORTAFOLIO</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="live-status">
+                    <span class="live-dot"></span> LIVE: 48kHz / 24bit
+                </div>
+                <a href="#auditoria" class="btn-audit">SOLICITAR AUDITORÍA</a>
+            </div>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="hero-container">
+            <div class="tag-line">/// INGENIERÍA DE SONIDO AVANZADA</div>
+            <h1 class="main-headline">SONIDO COMO<br>ESPACIO<br>TRIDIMENSIONAL</h1>
+            <p class="description">Arquitectura sonora de alta fidelidad para entornos críticos e instalaciones inmersivas de lujo.</p>
+            
+            <div class="cta-group">
+                <a href="#configurar" class="btn-cyan">CONFIGURAR ESPACIO</a>
+                <a href="#specs" class="btn-secondary">| DESCARGAR SPECS |</a>
+            </div>
+        </section>
+
+        <!-- ESPECIFICACIONES TÉCNICAS (TARJETAS) -->
+        <section class="specs-section">
+            <div class="specs-title">// 02_ESPECIFICACIONES_TÉCNICAS</div>
+            <div class="cards-grid">
+                <article class="card-tech">
+                    <div class="card-icon">DSP</div>
+                    <div class="card-content">
+                        <h3>[ 01 // DSP PROCESSORS ]</h3>
+                        <p>Procesamiento en tiempo real con latencia cero.</p>
+                    </div>
+                </article>
+
+                <article class="card-tech">
+                    <div class="card-icon">DIFF</div>
+                    <div class="card-content">
+                        <h3>[ 02 // ACOUSTIC DIFFUSION ]</h3>
+                        <p>Paneles de geometría variable y absorción selectiva.</p>
+                    </div>
+                </article>
+
+                <article class="card-tech">
+                    <div class="card-icon">MAP</div>
+                    <div class="card-content">
+                        <h3>[ 03 // IMMERSIVE MAPPING ]</h3>
+                        <p>Calibración tridimensional para entornos dolby & espacial.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER TÉCNICO -->
+    <footer class="site-footer wrapper">
+        <div>(c) AURA | CARACAS // BERLÍN // TOKIO</div>
+        <div class="footer-socials">
+            <a href="#tiktok" class="social-link">&gt; TIKTOK</a>
+            <a href="#instagram" class="social-link">&gt; INSTAGRAM</a>
+            <a href="#github" class="social-link">&gt; GITHUB</a>
+        </div>
+    </footer>
+
+</body>
+</html>
